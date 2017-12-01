@@ -1,3 +1,8 @@
+# What is this?
+This is fork of [Salvatore Cordiano's repository](https://github.com/salvatorecordiano/facile-it-realpath_cache) with apache http server replaced 
+with nginx and ability to test it with usage of $realpath_root variable instead of $document_root for populating SCRIPT_FILENAME
+and DOCUMENT_ROOT fastcgi params.
+
 # Is it all PHP OPCache's fault?
 
 This repository contains code showed in the post [Is it all PHP OPCache's fault?](https://engineering.facile.it/blog/eng/realpath-cache-is-it-all-php-opcache-s-fault/) published on [Facile.it Engineering Blog](https://engineering.facile.it).
@@ -5,9 +10,9 @@ This repository contains code showed in the post [Is it all PHP OPCache's fault?
 ## Installation
 
 ```
-$ git clone https://github.com/salvatorecordiano/facile-it-realpath_cache.git
+$ git clone https://github.com/fduch/facile-it-realpath_cache.git
 $ cd facile-it-realpath_cache
-$ docker pull salvatorecordiano/realpath_cache
+$ docker pull fduch/realpath_cache
 ```
 
 ## Shortcuts
@@ -19,8 +24,10 @@ $ docker pull salvatorecordiano/realpath_cache
 ## Configuration: production
 
 ```
-# start the container with production configuration
-$ ./start.sh production 
+# start the container with production configuration with $document_root variable usage
+$ ./start.sh production document_root
+# .. or with $realpath_root variable usage
+# ./start.sh production realpath_root
 # start switching the current release
 $ ./release-switcher.sh
 # start watching the current web server response 
@@ -30,8 +37,10 @@ $ ./release-watcher.sh
 ## Configuration: production + opcache disabled
 
 ```
-# start the container with production configuration and opcache disabled
+# start the container with production configuration and opcache disabled with $document_root variable usage
 $ ./start.sh production-no-opcache 
+# .. or with $realpath_root variable usage
+# ./start.sh production-no-opcache realpath_root
 # start switching the current release
 $ ./release-switcher.sh
 # start watching the current web server response 
@@ -41,8 +50,10 @@ $ ./release-watcher.sh
 ## Configuration: production + realpath_cache disabled
 
 ```
-# start the container with production configuration, opcache enabled and realpath_cache disabled
+# start the container with production configuration, opcache enabled and realpath_cache disabled  with $document_root variable usage
 $ ./start.sh production-no-realpath-cache
+# .. or with $realpath_root variable usage
+# ./start.sh production-no-realpath-cache realpath_root
 # start switching the current release
 $ ./release-switcher.sh
 # start watching the current web server response 
@@ -52,6 +63,7 @@ $ ./release-watcher.sh
 ## Author
 
 [Salvatore Cordiano](http://twitter.com/parallelit)
+[Alex Medvedev](http://twitter.com/fduch)
 
 ## License
 
